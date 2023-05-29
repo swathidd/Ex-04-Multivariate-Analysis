@@ -1,4 +1,6 @@
 # Ex-04-Multivariate-Analysis
+# AIM:
+To do multivariate analysis on the given data
 
 ## EXPLANATION:
 Exploratory data analysis is used to understand the messages within a dataset. This technique involves many iterative processes to ensure that the cleaned data is further sorted to better understand the useful meaning.The primary aim with exploratory analysis is to examine the data for distribution, outliers and anomalies to direct specific testing of your hypothesis.
@@ -36,6 +38,40 @@ Find the pairwise correlation of all columns in the dataframe.corr() .
 STEP 8:
 
 Save the final data set into the file.
+## POROGRAM
+```
+import pandas as pd
+
+df=pd.read_csv('/content/SuperStore.csv')
+
+df.head()
+
+df.dtypes
+
+df.corr()
+
+import seaborn as sns
+
+sns.heatmap(df.corr(),annot=True)
+
+import matplotlib.pyplot as plt
+
+states=df.loc[:,["State","Postal Code"]]
+
+states=states.groupby(by=["State"]).sum().sort_values(by="Postal Code")
+
+plt.figure(figsize=(10,7))
+
+sns.barplot(x=states.index,y="Postal Code",data=states)
+
+plt.xticks(rotation = 90)
+
+plt.xlabel=("STATE")
+
+plt.ylabel=("POSTAL CODE")
+
+plt.show()
+```
 
 # OUTPUT:
 # DATASET
